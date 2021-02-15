@@ -24,8 +24,9 @@ const BottomNavigationAccessoriesShowcase = ({navigation, state}) => {
 
   return (
     <BottomNavigation style={styles.bottomNavigation} {...topState}>
-      {tabIcons.map(({title, icon}) => (
+      {tabIcons.map(({title, icon}, i) => (
         <BottomNavigationTab
+          key={`${title}_${icon}_${i}`}
           title={title}
           icon={(props) => <TabIcon name={icon} {...props} />}
         />
