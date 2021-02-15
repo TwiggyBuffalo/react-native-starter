@@ -6,24 +6,28 @@ import {
   Icon,
 } from '@ui-kitten/components';
 
-const PersonIcon = (props) => <Icon {...props} name="person-outline" />;
-// const HouseIcon = (props) => <Icon {...props} name="house-outline" />;
-const BellIcon = (props) => <Icon {...props} name="bell-outline" />;
-const EmailIcon = (props) => <Icon {...props} name="email-outline" />;
+const PersonIcon = (props) => <Icon {...props} name="person" />;
+const CarIcon = (props) => <Icon {...props} name="car" />;
+const HouseIcon = (props) => <Icon {...props} name="home" />;
+const SearchIcon = (props) => <Icon {...props} name="search" />;
 
-const useBottomNavigationState = (initialState = 0) => {
-  const [selectedIndex, setSelectedIndex] = React.useState(initialState);
-  return {selectedIndex, onSelect: setSelectedIndex};
+const useBottomNavigationState = ({navigation, state}) => {
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const onSelect = (index) => {
+    navigation.navigate(state.routeNames[index]);
+    setSelectedIndex(index);
+  };
+  return {selectedIndex, onSelect};
 };
 
-const BottomNavigationAccessoriesShowcase = () => {
-  const topState = useBottomNavigationState();
+const BottomNavigationAccessoriesShowcase = ({navigation, state}) => {
+  const topState = useBottomNavigationState({navigation, state});
 
   return (
     <BottomNavigation style={styles.bottomNavigation} {...topState}>
-      <BottomNavigationTab title="HOME" icon={PersonIcon} />
-      <BottomNavigationTab title="SEARCH" icon={EmailIcon} />
-      <BottomNavigationTab title="ORDERS" icon={BellIcon} />
+      <BottomNavigationTab title="HOME" icon={HouseIcon} />
+      <BottomNavigationTab title="SEARCH" icon={SearchIcon} />
+      <BottomNavigationTab title="ORDERS" icon={CarIcon} />
       <BottomNavigationTab title="ACCOUNT" icon={PersonIcon} />
     </BottomNavigation>
   );
