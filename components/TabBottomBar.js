@@ -6,10 +6,9 @@ import {
   Icon,
 } from '@ui-kitten/components';
 
-const PersonIcon = (props) => <Icon {...props} name="person" />;
-const CarIcon = (props) => <Icon {...props} name="car" />;
-const HouseIcon = (props) => <Icon {...props} name="home" />;
-const SearchIcon = (props) => <Icon {...props} name="search" />;
+import tabIcons from '../config/tab-icons';
+
+const TabIcon = ({name, ...props}) => <Icon {...props} name={name} />;
 
 const useBottomNavigationState = ({navigation, state}) => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
@@ -25,10 +24,12 @@ const BottomNavigationAccessoriesShowcase = ({navigation, state}) => {
 
   return (
     <BottomNavigation style={styles.bottomNavigation} {...topState}>
-      <BottomNavigationTab title="HOME" icon={HouseIcon} />
-      <BottomNavigationTab title="SEARCH" icon={SearchIcon} />
-      <BottomNavigationTab title="ORDERS" icon={CarIcon} />
-      <BottomNavigationTab title="ACCOUNT" icon={PersonIcon} />
+      {tabIcons.map(({title, icon}) => (
+        <BottomNavigationTab
+          title={title}
+          icon={(props) => <TabIcon name={icon} {...props} />}
+        />
+      ))}
     </BottomNavigation>
   );
 };
