@@ -1,7 +1,7 @@
 export default {
-  'color-primary-100': '#FAE4C9',
-  'color-primary-200': '#F6C396',
-  'color-primary-300': '#E5945F',
+  'color-primary-100': '#F2F6FF',
+  'color-primary-200': '#D9E4FF',
+  'color-primary-300': '#A6C1FF',
   'color-primary-400': '#CC6736',
   'color-primary-500': '#AB2F04',
   'color-primary-600': '#931D02',

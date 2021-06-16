@@ -1,57 +1,45 @@
 import React from 'react';
-import {Alert} from 'react-native';
-import {Layout, Text, Button} from '@ui-kitten/components';
+import { Alert } from 'react-native';
+import { Text, Button } from '@ui-kitten/components';
+
+import PageWrapper from '../components/PageWrapper';
 
 const styles = {
-  layout: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column',
-    paddingTop: 100,
-  },
   subheading: {
     marginVertical: 20,
   },
   button: {
-    marginVertical: 50,
-  },
-  caption: {
-    marginTop: 100,
+    marginVertical: 30,
   },
 };
 
 const HomeScreen = () => {
   const createThreeButtonAlert = () =>
     Alert.alert(
-      'Hello World!',
-      'Alert example',
+      'Warning',
+      'Confirm delete?',
       [
         {
-          text: 'Hello',
-          onPress: () => console.log('Hello pressed'),
+          text: 'Yes',
+          onPress: () => console.log('Yes pressed'),
         },
         {
           text: 'Cancel',
           onPress: () => console.log('Cancel Pressed'),
           style: 'cancel',
         },
-        {text: 'World!', onPress: () => console.log('World! Pressed')},
+        { text: 'No', onPress: () => console.log('No Pressed') },
       ],
-      {cancelable: false},
+      { cancelable: false },
     );
   return (
-    <Layout style={styles.layout}>
-      <Text category="h1">Welcome to</Text>
-      <Text category="h4" style={styles.subheading}>
-        React Native Starter Project
-      </Text>
-      <Text>This project is built using UI-Kitten v5.0</Text>
+    <PageWrapper>
+      <Text category="h1">Home</Text>
       <Button style={styles.button} onPress={createThreeButtonAlert}>
-        Click me!
+        Show Alert
       </Button>
-      <Text style={styles.caption}>Made with ❤️ by TwiggyBuffalo</Text>
-    </Layout>
+      <Text>Made with ❤️ by TwiggyBuffalo</Text>
+    </PageWrapper>
   );
 };
 

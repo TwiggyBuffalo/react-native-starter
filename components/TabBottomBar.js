@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import {
   BottomNavigation,
   BottomNavigationTab,
@@ -8,23 +8,23 @@ import {
 
 import tabIcons from '../config/tab-icons';
 
-const TabIcon = ({name, ...props}) => <Icon {...props} name={name} />;
+const TabIcon = ({ name, ...props }) => <Icon {...props} name={name} />;
 
-const useBottomNavigationState = ({navigation, state}) => {
+const useBottomNavigationState = ({ navigation, state }) => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const onSelect = (index) => {
     navigation.navigate(state.routeNames[index]);
     setSelectedIndex(index);
   };
-  return {selectedIndex, onSelect};
+  return { selectedIndex, onSelect };
 };
 
-const BottomNavigationAccessoriesShowcase = ({navigation, state}) => {
-  const topState = useBottomNavigationState({navigation, state});
+const BottomNavigationAccessoriesShowcase = ({ navigation, state }) => {
+  const topState = useBottomNavigationState({ navigation, state });
 
   return (
     <BottomNavigation style={styles.bottomNavigation} {...topState}>
-      {tabIcons.map(({title, icon}, i) => (
+      {tabIcons.map(({ title, icon }, i) => (
         <BottomNavigationTab
           key={`${title}_${icon}_${i}`}
           title={title}
